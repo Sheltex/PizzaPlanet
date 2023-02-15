@@ -15,10 +15,10 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     ListView idListaValores;
 
-    String idTitulo [] = {"Pizza Toscana"};
-    String idDesc[] = {"Mais uma tradição da Itália, a Toscana da Rede Leve Pizza com muita calabresa ralada e bacon vai levar um sabor diferenciado para sua mesa. Experimente, é garantia de satisfação."};
-    String idNota[] = {"0.5"};
-    int idImagemPizza [] = {R.drawable.toscana};
+    String Titulo[] = {"Pizza Toscana"};
+    String Desc[] = {"Mais uma tradição da Itália, a Toscana da Rede Leve Pizza com muita calabresa ralada e bacon vai levar um sabor diferenciado para sua mesa. Experimente, é garantia de satisfação."};
+    String Nota[] = {"0.5"};
+    int ImagemPizza[] = {R.drawable.toscana};
 
     double rating[] = {0.5};
 
@@ -28,16 +28,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-            idListaValores = findViewById(R.id.idListaValores);
-            MyAdapter adapter=new MyAdapter();
-            idListaValores.setAdapter(adapter);
+        idListaValores = findViewById(R.id.idListaValores);
+        MyAdapter adapter = new MyAdapter();
+        idListaValores.setAdapter(adapter);
 
     }
+
     public class MyAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
-            return idImagemPizza.length;
+            return ImagemPizza.length;
         }
 
         @Override
@@ -52,16 +53,23 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            return null;
+            ImageView img;
+            TextView t, st, n;
+
+            View v = getLayoutInflater().inflate(R.layout.modelo_cardapio, null);
+
+            img = v.findViewById(R.id.idImagemPizza);
+            t = v.findViewById(R.id.idTitulo);
+            st = v.findViewById(R.id.idDesc);
+            n = v.findViewById(R.id.idNota);
+
+            t.setText(Titulo[i]);
+            st.setText(Desc[i]);
+            n.setText(Nota[i]);
+            img.setImageResource(ImagemPizza[i]);
+
+            return v;
         }
-
-       ImageView img;
-        TextView t, st, n;
-
-        View v = getLayoutInflater().inflate(R.layout.modelo_cardapio, null);
-        img = v.fi
-
-
 
     }
 }
